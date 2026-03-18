@@ -14,7 +14,7 @@ export interface AnalysisResult {
   encouragingClosing: string;
 }
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_NLP_API_URL || '/api';
 
 export async function analyzeDiaryEntryWithNLP(entry: string): Promise<AnalysisResult> {
   try {

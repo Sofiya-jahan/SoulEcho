@@ -7,16 +7,22 @@ from nltk.stem import WordNetLemmatizer
 
 # Download necessary NLTK data
 def download_nltk_resources():
-    try:
-        nltk.data.find('tokenizers/punkt')
-        nltk.data.find('corpora/stopwords')
-        nltk.data.find('corpora/wordnet')
-    except LookupError:
-        nltk.download('punkt')
-        nltk.download('stopwords')
-        nltk.download('wordnet')
-        nltk.download('omw-1.4')
-        nltk.download('punkt_tab')
+    import os
+    # For serverless environments like Vercel, we might need a writable directory
+    nltk_data_path = os.path.join('/tmp', 'nltk_data') if os.access('/tmp', os.W_OK) else None
+    if nltk_data_path:
+        if nltk_data_path not in nltk.data.path:
+            nltk.data.path.append(nltk_data_path)
+            if not os.path.exists(nltk_data_path):
+                os.makedirs(nltk_data_path)
+
+    resources = ['tokenizers/punkt', 'corpora/stopwords', 'corpora/wordnet', 'corpora/omw-1.4', 'tokenizers/punkt_tab']
+    
+    for resource in resources:
+        try:
+            nltk.data.find(resource)
+        except LookupError:
+            nltk.download(resource.split('/')[-1] if '/' in resource else resource, download_dir=nltk_data_path)
 
 class TextPreprocessor:
     def __init__(self):

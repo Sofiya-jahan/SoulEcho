@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+nltk
+vaderSentiment
+rake-nltk
+python-multipart
+# Excluded heavy dependencies not used by the core engine: spacy, scikit-learn, pandas, numpy
