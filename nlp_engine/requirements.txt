@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+nltk
+vaderSentiment
+spacy
+scikit-learn
+pandas
+numpy
+rake-nltk
+python-multipart
+pytest

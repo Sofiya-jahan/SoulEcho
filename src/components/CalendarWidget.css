@@ -1,0 +1,87 @@
+.soul-echo-calendar {
+  width: 100% !important;
+  border: none !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.soul-echo-calendar .react-calendar__navigation {
+  margin-bottom: 2rem !important;
+}
+
+.soul-echo-calendar .react-calendar__navigation button {
+  font-family: 'Instrument Serif', 'Georgia', serif !important;
+  font-size: 1.5rem !important;
+  color: #5A5A40 !important;
+  min-width: 44px !important;
+  background: none !important;
+  border-radius: 12px !important;
+}
+
+.soul-echo-calendar .react-calendar__navigation button:enabled:hover,
+.soul-echo-calendar .react-calendar__navigation button:enabled:focus {
+  background-color: #f9f9f7 !important;
+}
+
+.soul-echo-calendar .react-calendar__month-view__weekdays {
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.1em !important;
+  color: #9CA3AF !important;
+  margin-bottom: 1rem !important;
+}
+
+.soul-echo-calendar .react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none !important;
+}
+
+.soul-echo-calendar .react-calendar__tile {
+  padding: 1.25rem 0.5rem !important;
+  background: none !important;
+  border-radius: 16px !important;
+  font-size: 0.9rem !important;
+  color: #4B5563 !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+}
+
+.soul-echo-calendar .react-calendar__tile:enabled:hover,
+.soul-echo-calendar .react-calendar__tile:enabled:focus {
+  background-color: #f9f9f7 !important;
+  color: #5A5A40 !important;
+}
+
+.soul-echo-calendar .react-calendar__tile--now {
+  background: #f9f9f7 !important;
+  font-weight: bold !important;
+  color: #5A5A40 !important;
+}
+
+.soul-echo-calendar .react-calendar__tile--active {
+  background: #5A5A40 !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(90, 90, 64, 0.2) !important;
+}
+
+.soul-echo-calendar .react-calendar__tile--active:enabled:hover,
+.soul-echo-calendar .react-calendar__tile--active:enabled:focus {
+  background: #5A5A40 !important;
+  color: white !important;
+}
+
+/* Custom indicator for entries */
+.has-entry::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #5A5A40;
+}
+
+.react-calendar__tile--active.has-entry::after {
+  background-color: white;
+}
