@@ -1,3 +1,9 @@
+import os
+import sys
+
+# Add parent directory to sys.path to allow importing nlp_engine
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel

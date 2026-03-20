@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../services/AuthContext';
 import { getUserEntries, DiaryEntry } from '../services/entryService';
 import { 
@@ -36,12 +37,19 @@ const MonthlyAnalysis: React.FC = () => {
       if (user) {
         try {
           const fetched = await getUserEntries(user.uid);
-          // Filter for current month
+          // Filter for current month using a more robust comparison
           const now = new Date();
+          const currentMonth = now.getMonth();
+          const currentYear = now.getFullYear();
+          
           const currentMonthEntries = fetched.filter(e => {
-            const date = new Date(e.createdAt.toDate());
-            return date.getMonth() === now.getMonth() && date.getFullYear() === now.getFullYear();
+            const entryDate = e.createdAt.toDate();
+            return entryDate.getMonth() === currentMonth && entryDate.getFullYear() === currentYear;
           });
+          
+          // If no entries for this month, but there are entries in history, 
+          // we could show the most recent ones as a placeholder or just stay empty.
+          // For now, let's just use what we have.
           setEntries(currentMonthEntries);
         } catch (error) {
           console.error('Error fetching entries for analysis:', error);
